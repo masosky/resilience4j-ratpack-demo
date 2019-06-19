@@ -2,6 +2,7 @@ package com.test;
 
 import com.google.inject.AbstractModule;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
+import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
 import io.github.resilience4j.ratpack.Resilience4jConfig;
 import io.github.resilience4j.ratpack.Resilience4jModule;
 
@@ -15,7 +16,7 @@ public class CircuitBreakerModule extends AbstractModule {
 
     @Override
     protected void configure() {
-        //bind(CircuitBreakerRegistry.class).toInstance(CircuitBreakerRegistry.of(config));
+        bind(CircuitBreakerRegistry.class).toInstance(CircuitBreakerRegistry.of(config));
         //bind(ServerConfig.class).to(DefaultServerConfig.class);
         Resilience4jModule module = new Resilience4jModule();
         module.configure((Resilience4jConfig c) -> {
